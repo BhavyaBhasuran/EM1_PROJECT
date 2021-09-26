@@ -1,0 +1,39 @@
+<%- include ('partials/header.ejs'); -%>
+<div class="container">
+    <% if (message) { %>
+        <p class="text-center text-danger"><%= message %></p>
+    <% } %>
+
+    <% if (member) { %>
+        <form class="add-member-form" action="" method="post" enctype="multipart/form-data">
+            <div class="form-row">
+                <div class="form-group col-md-4">
+                    <label for="first-name">First Name</label>
+                    <input type="text" class="form-control" name="first_name" id="first-name" value="<%= member.first_name %>" required>
+                </div>
+                <div class="form-group col-md-4">
+                    <label for="last-name">Last Name</label>
+                    <input type="text" class="form-control" name="last_name" id="last-name" value="<%= member.last_name %>" required>
+                </div>
+                <div class="form-group col-md-4">
+                    <label for="username">Username</label>
+                    <input type="text" id="user" name="username" id="username" value="<%= member.username %>" required disabled title="Username cannot be edited.">
+                </div>
+            </div>
+            <div class="form-row">
+               <div class="form-group col-md-6">
+                    <label for="phone">phone</label>
+                    <input type="number" id="ph" name="phone" id="phone" placeholder="phone" value="<%= member.phone %>" required>
+                </div>
+            </div>
+            <div id=update>
+            <button type="submit" class="btn btn-success float-right">Update member</button>
+        </div>
+        </form>
+    <% } else { %>
+        <p class="text-center">Player Not Found. Go <a href="/add">here</a> to add members.</p>
+    <% } %>
+</div>
+</div>
+</body>
+</html>

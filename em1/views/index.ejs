@@ -1,0 +1,43 @@
+<%- include ('partials/header.ejs'); -%>
+    <div class="table-wrapper">
+        <% if (members.length > 0) {%>
+            <table class="table table-hovered">
+                <thead class="thead-dark">
+                    <tr>
+                        <th scope="col">ID</th>
+                        <th scope="col">Image</th>
+                        <th scope="col">First Name</th>
+                        <th scope="col">Last Name</th>
+                        <th scope="col">phone</th>
+                        <th scope="col">Username</th>
+                        <th scope="col">Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% members.forEach((member, index) => { %>
+                        <tr>
+                            <td scope="row"><%= member.id %></td>
+                            <td><img src="/assets/img/<%= member.image %>" class="rounded-circle member-img" alt=""></td>
+                            <td><%= member.first_name %></td>
+                            <td><%= member.last_name %></td>
+                            <td><%= member.phone %></td>
+                            <td>@<%= member.username %></td>
+                            <td>
+                                <button class="button">
+                                <a href="/edit/<%= member.id %>" target="_blank" rel="noopener" class="btn btn-sm btn-success">Edit</a>
+                            </button>
+                            <button class="action">
+                                <a href="/delete/<%= member.id %>" class="btn btn-sm btn-danger">Delete</a>
+                            </button>
+                            </td>
+                        </tr>
+                    <% }) %>
+                </tbody>
+            </table>
+        <% } else { %>
+            <p class="text-center">No members found. Go <a href="/add" >here</a> to add member.</p>
+        <% } %>
+    </div>
+</div>
+</body>
+</html>
